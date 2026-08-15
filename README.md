@@ -9,7 +9,6 @@ Philippine e-commerce hit $18 billion in 2023, growing 25% annually. But rapid g
 ```mermaid
 flowchart LR
     KIN[Kinesis] --> SPS[Snowpipe Streaming]
-    SP --> RAW[RAW Tables]
     SPS --> RAW
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
