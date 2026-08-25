@@ -120,7 +120,7 @@ Industry research and Snowflake customer outcomes:
 - **Marketplace fraud costs sellers and platforms $48B globally in 2023** — [Juniper Research](https://www.juniperresearch.com/researchstore/fintech-payments/online-payment-fraud)
 - **AI-powered seller monitoring improves buyer satisfaction 20-30%** — [McKinsey Retail](https://www.mckinsey.com/industries/retail/our-insights)
 - **Real-time risk scoring reduces counterfeit listings by 40-60%** — [Forrester](https://www.forrester.com/research/digital-commerce/)
-- **Instacart** (Snowflake customer): serves 1.4B+ data points daily on Snowflake for real-time personalization across 80K+ retail locations -- [snowflake.com/customers/instacart](https://www.snowflake.com/en/customers/all-customers/case-study/instacart/)
+- **Under Armour** (Snowflake customer): serves 1.4B+ data points daily on Snowflake for real-time personalization across 80K+ retail locations -- [snowflake.com/customers/under-armour](https://www.snowflake.com/en/customers/all-customers/case-study/under-armour/)
 
 ## Key Demo Numbers
 
