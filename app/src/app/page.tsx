@@ -32,15 +32,23 @@ export default function HomePage() {
       .catch(() => {});
   }, []);
 
+
+  // Look up a KPI value returned by /api/data (sourced from CURATED.KPI_SUMMARY).
+  // Falls back to the original literal so the card still renders if the API,
+  // or KPI_SUMMARY, is unavailable.
+  const kpiVal = (title: string, fallback: string): string =>
+    (data?.kpiCards as { title: string; value: string }[] | undefined)
+      ?.find((k) => k.title === title)?.value ?? fallback;
+
   const title = narrative?.title || 'SEA AWS Demo';
 
   const executiveCockpit = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="GMV (MTD)" value="₱8.4B" status="neutral" />
-        <KPICard title="Active Sellers" value="84K" status="neutral" />
-        <KPICard title="Buyer Conversion" value="3.2%" status="neutral" />
-        <KPICard title="Orders (MTD)" value="12.4M" status="neutral" />
+        <KPICard title="GMV (MTD)" value={kpiVal('GMV (MTD)', '₱8.4B')} status="neutral" />
+        <KPICard title="Active Sellers" value={kpiVal('Active Sellers', '84K')} status="neutral" />
+        <KPICard title="Buyer Conversion" value={kpiVal('Buyer Conversion', '3.2%')} status="neutral" />
+        <KPICard title="Orders (MTD)" value={kpiVal('Orders (MTD)', '12.4M')} status="neutral" />
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="lg:col-span-1">
@@ -87,9 +95,9 @@ export default function HomePage() {
   const domainTab1 = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <KPICard title="Avg Order Value" value="₱680" />
-        <KPICard title="Repeat Purchase" value="34%" />
-        <KPICard title="Cart Abandonment" value="72%" />
+        <KPICard title="Avg Order Value" value={kpiVal('Avg Order Value', '₱680')} />
+        <KPICard title="Repeat Purchase" value={kpiVal('Repeat Purchase', '34%')} />
+        <KPICard title="Cart Abandonment" value={kpiVal('Cart Abandonment', '72%')} />
       </div>
       <Chart
         data={data?.detail || [{ x: 'Mon', y: 24 }, { x: 'Tue', y: 28 }, { x: 'Wed', y: 22 }, { x: 'Thu', y: 31 }, { x: 'Fri', y: 26 }, { x: 'Sat', y: 19 }, { x: 'Sun', y: 23 }]}
