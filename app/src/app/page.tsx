@@ -54,6 +54,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="philippines"
+            labels={{ entity: 'Sellers', event: 'Orders', alert: 'Seller Issues' }}
             regions={data?.regions}
             markers={[{"label": "Manila", "value": "Core market: 84K sellers", "color": "blue", "size": "lg"}, {"label": "Cebu", "value": "Growing: 12K sellers", "color": "green", "size": "md"}, {"label": "Davao", "value": "Emerging: 4K sellers", "color": "amber", "size": "md"}]}
             routes={[]}
@@ -84,8 +85,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: 'Rank' },
           { key: 'name', header: 'Seller' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Growth' },
-          { key: 'value', header: 'GMV (₱M)' },
+          { key: 'm1', header: 'GMV (₱M)' },
+          { key: 'm2', header: 'Order Value' },
+          { key: 'm3', header: 'Repeat Purchase' },
+          { key: 'events', header: 'Orders' },
+          { key: 'alerts', header: 'Seller Issues' },
         ]}
         data={data?.entities || []}
         title="Top Seller Performance"
