@@ -1,0 +1,76 @@
+{
+  "title": "Philippines Marketplace Seller Health",
+  "duration": "6 minutes",
+  "thesis": "On one governed platform, Snowflake turns daily seller activity from a synthetic Philippine online marketplace into order-integrity KPIs, 7-day order-cancellation risk per seller, return rate anomalies and AI answers that cite their sources.",
+  "tabs": [
+    {
+      "id": "executive-cockpit",
+      "persona": { "name": "Andrea Villanueva", "role": "Head of Marketplace Trust and Operations (fictional)", "avatar": "" },
+      "talking_points": [
+        "48 sellers ship from Quezon City, Cebu City, Davao City, Iloilo City and Cagayan de Oro; the cards show clean order rate, order issues, cancelled orders and GMV in PHP.",
+        "Each KPI is computed as a numerator over a denominator in a curated dynamic table, so you can trace it to seller-day rows.",
+        "The issue-type chart separates issues that end in a cancellation from ones that always get resolved, such as weather-related courier disruptions."
+      ],
+      "show": ["KPI cards", "Daily order issues", "Order issues by type", "Seller table"],
+      "call_out": "Marketplace KPIs you can trace to source rows",
+      "transition": { "next_tab": "predictive", "line": "Which sellers need a health review first?" }
+    },
+    {
+      "id": "predictive",
+      "persona": { "name": "Paolo Mendoza", "role": "Seller Health Analyst (fictional)", "avatar": "" },
+      "talking_points": [
+        "A Snowflake ML classifier estimates, per seller, the chance of a cancelled order in the next 7 days.",
+        "Precision and recall come from the latest 14 days held out of training, shown next to the base rate.",
+        "Anomaly detection picks out unusual seller return rates, and the forecast covers the next 14 days of order issues."
+      ],
+      "show": ["Holdout metrics", "Risk by seller", "Order-issue forecast", "Return rate anomalies"],
+      "call_out": "ML that is evaluated honestly, next to the data",
+      "transition": { "next_tab": "planning", "line": "Are sellers keeping their stock and documents in order?" }
+    },
+    {
+      "id": "planning",
+      "persona": { "name": "Andrea Villanueva", "role": "Head of Marketplace Trust and Operations (fictional)", "avatar": "" },
+      "talking_points": [
+        "Stock sync compliance, seller document coverage and pending documents show where controls are slipping.",
+        "Plotting stock sync compliance against cancelled orders per seller shows where the two move together; that is an association, not a cause.",
+        "The action memo proposes three prioritised actions using only the KPI, seller, issue-type and risk rows."
+      ],
+      "show": ["Stock sync compliance and document coverage", "Stock sync compliance vs cancelled orders", "Action memo"],
+      "call_out": "Draft actions grounded in data, reviewed by a person",
+      "transition": { "next_tab": "live", "line": "What happens when an order hits a problem right now?" }
+    },
+    {
+      "id": "live",
+      "persona": { "name": "Paolo Mendoza", "role": "Seller Health Analyst (fictional)", "avatar": "" },
+      "talking_points": [
+        "New order events arrive in RAW.LIVE_ORDERS, either from the simulator or from Amazon Data Firehose through Snowpipe.",
+        "The alert records each ISSUE event with an SOP hint and the seller's risk band, then emails the on-call seller health analyst."
+      ],
+      "show": ["Events loaded and lag", "Latest order events", "Alert log"],
+      "call_out": "From a live order issue to a seller health case on one platform",
+      "transition": { "next_tab": "ask-ai", "line": "Let's ask the data directly." }
+    },
+    {
+      "id": "ask-ai",
+      "persona": { "name": "Andrea Villanueva", "role": "Head of Marketplace Trust and Operations (fictional)", "avatar": "" },
+      "talking_points": [
+        "The Cortex Agent answers metric questions with Cortex Analyst over the semantic view, and procedure questions with Cortex Search over 14 synthetic SOPs.",
+        "Every answer shows the SQL it generated and the SOP IDs it cited."
+      ],
+      "show": ["Ask a sample question", "Generated SQL", "SOP citations"],
+      "call_out": "Answers in plain language that you can check",
+      "transition": { "next_tab": "architecture", "line": "This is how it fits together." }
+    },
+    {
+      "id": "architecture",
+      "persona": { "name": "Andrea Villanueva", "role": "Head of Marketplace Trust and Operations (fictional)", "avatar": "" },
+      "talking_points": [
+        "One core supports two builds: Snowflake only, or AWS + Snowflake with Data Firehose, Bedrock, QuickSight and Amazon Q.",
+        "All data shown is synthetic and rebuilds the same way from the repo."
+      ],
+      "show": ["Both architecture diagrams"],
+      "call_out": "A governed core with an optional AWS edge",
+      "transition": { "next_tab": "", "line": "Questions?" }
+    }
+  ]
+}
